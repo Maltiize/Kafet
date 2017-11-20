@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text"> Voulez vous vraiment supprimer le {{ type }} {{ nom }}</h1>
+    <p>Toutes les transactions liées à ce {{ type }} seront DEFINITIVEMENT supprimées</p>
+    {% block form %}
+
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+
+
+{% endblock %}
+

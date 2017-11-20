@@ -1,0 +1,5 @@
+old kafet
+vendor/*
+var/logs/*
+var/cache/*
+var/sessions/*

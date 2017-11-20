@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="widget_text">
+        <h1 class="spaced_text"> Liste des Produits</h1>
+
+        <ul class="nav nav-tabs">
+
+            {% set numberpertable = 10 %}
+            {% set num = produits|length/numberpertable %}
+
+            {% if num|round(0,'floor') !=0 %}
+                {% for i in range (0, num|round(0,'floor')) %}
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if i == 0 %}active {% endif %}"  data-toggle="tab"  href="#nav_{{ i }}" role="tab">Page {{ i }}</a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active "  data-toggle="tab"  href="#nav_0" role="tab">Page 0</a>
+                </li>
+
+            {% endif %}
+
+        </ul>
+        <div class="tab-content">
+            {% set a = 0 %}
+            {% set b = 0 %}
+            {% for addr in produits %}
+                {% if a%numberpertable == 0 %}
+                    <div class="tab-pane fade  {% if a == 0 %}in active{% endif %}" id="nav_{{ b }}">
+                    <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Crée le </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set b = b + 1%}
+                {% endif %}
+
+                <tr>
+                    <td>{{ addr.id }}</td>
+                    <td>{{  addr.nom  }}</td>
+                    <td>{{  addr.prix  }}</td>
+                    <td>{{  addr.date  }}</td>
+
+                    <td>
+                        <a class="btn btn-default {% if not is_granted("ROLE_ADMIN") %} disabled{% endif %}" href="{{ path('editProduit',{'id':addr.id}) }}" role="button">Modifier</a>
+                        <a class="btn btn-default {% if not is_granted("ROLE_ADMIN") %} disabled{% endif %}" href="{{ path('deleteProduit',{'id':addr.id}) }}" role="button">Supprimer</a>
+                    </td>
+                </tr>
+                {% if (a+1)%numberpertable == 0 %}
+                    </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+
+                {% set a = (a + 1) %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+

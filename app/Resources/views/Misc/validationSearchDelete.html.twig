@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text"> Voulez vous vraiment supprimer les clients suivants</h1>
+    <p>Toutes les transactions liées à ces clients  seront DEFINITIVEMENT supprimées</p>
+    {% block form %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Numero</th>
+                    <th>Solde</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for addr in clients %}
+
+            <tr>
+                    <td>{{ addr.id }}</td>
+                    <td>{{ addr.nom }}</td>
+                    <td>{{  addr.prenom  }}</td>
+                    <td>{{  addr.numero  }}</td>
+                    <td>{{  addr.solde  }}€</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+
+
+    {% endblock %}
+
+
+{% endblock %}
+

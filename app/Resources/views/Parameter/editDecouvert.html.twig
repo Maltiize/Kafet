@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text">  Modifier le découvert max des clients </h1>
+    <p>Attention le montant ne peut être positif</p>
+    {% block form %}
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+
+{% endblock %}
+

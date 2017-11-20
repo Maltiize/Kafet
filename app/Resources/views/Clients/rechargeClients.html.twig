@@ -1,0 +1,16 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text">  Recharger un compte </h1>
+
+    <p> Attention les montant négatif ne sont pas tolérés </p>
+    {% block form %}
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+{% endblock %}
+
+

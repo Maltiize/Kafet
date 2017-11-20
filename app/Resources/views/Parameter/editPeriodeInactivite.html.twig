@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text">  Modifier la période d'inactivité</h1>
+    <p>Attention les valeurs ne peuvent être négatives</p>
+    {% block form %}
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+
+{% endblock %}
+

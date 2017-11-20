@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="widget_text">
+
+
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#transac">Effectuer une transactions</a></li>
+            <li><a data-toggle="tab" href="#histoAchat">Historiques des achats</a></li>
+            <li><a data-toggle="tab" href="#histoRecharge">Historiques des recharges</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="transac" class="tab-pane fade in active spaced_text">
+                <table class="table table-hover  spaced_text">
+
+                    <tbody>
+                    {% block form %}
+                        {{ form_start(form) }}
+
+                        {% for child in form.children|keys %}
+                            <tr>
+                                <td> {% if(child != "_token" ) %} {{ form_row_test(attribute(form.children,child)) }}{% endif %} {% if child matches '/^\\d+$/' %} <p class="btn btn-default btnform" onclick="addition(this.id)" id="form[{{ child }}]">+</p> {% endif %}</td>
+
+                            </tr>
+                        {% endfor %}
+
+
+                        {{ form_end(form) }}
+                    {% endblock %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div id="histoAchat" class="tab-pane fade">
+
+                <table class="table table-hover  spaced_text">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom du produit</th>
+                        <th>Prix du produit</th>
+                        <th>Quantité</th>
+                        <th>Prix total</th>
+                        <th>Date de la transaction</th>
+                        <th>Responsable </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for addr in transactions %}
+
+                        <tr>
+                            <td>{{  addr.id  }}</td>
+                            <td>{{ addr.produitNom }}</td>
+                            <td>{{  addr.produitPrix  }}€</td>
+                            <td> {{ addr.qtt }}</td>
+                            <td> {{ addr.qtt *  addr.produitPrix}}€</td>
+                            <td>{{  addr.date  }}</td>
+                            <td>{{  addr.crea  }}</td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="histoRecharge" class="tab-pane fade">
+
+                <table class="table table-hover  spaced_text">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Montant de la recharge</th>
+                        <th>Date de la recharge</th>
+                        <th>Responsable </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for addr in recharges %}
+
+                        <tr>
+                            <td>{{  addr.id  }}</td>
+                            <td>{{  addr.montant  }}€</td>
+                            <td>{{  addr.date  }}</td>
+                            <td>{{  addr.crea  }}</td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        form = document.forms[1];
+
+
+        function addition(id){
+
+            form[id].value ++;
+        }
+    </script>
+
+{% endblock %}
+

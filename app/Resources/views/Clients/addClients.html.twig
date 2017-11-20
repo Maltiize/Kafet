@@ -1,0 +1,16 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text"> Rajouter un client dans la base </h1>
+
+    <p> Attention un client ne peut être peip avec une année > 2 de même que les non peip ne peuvent avoir une année <=2  </p>
+    {% block form %}
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+{% endblock %}
+
+

@@ -1,0 +1,11 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text"> Redirection en cours </h1>
+
+    <script>
+        window.location.href = "{{ path( pth ,{'id':id}) }}" ;
+    </script>
+{% endblock %}
+

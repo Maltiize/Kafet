@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="spaced_text"> Voulez vous vraiment incrémenter l'année des clients</h1>
+    <p>Toutes les années des comptes seront incrémentées sauf celles des peip2. </p>
+    <p>Les 5A seront passés en diplomés. </p>
+    {% block form %}
+
+
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+    {% endblock %}
+
+
+{% endblock %}
+

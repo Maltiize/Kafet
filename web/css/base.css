@@ -1,0 +1,36 @@
+.container-fluid label{
+    width: 15%;
+}
+
+.spaced_text{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.btnlabelform{
+    width: 18%;
+
+}
+.sidebar-nav li {
+    color: rgba(255, 255, 255, 0.84);
+}
+.menuli{
+    background-color: rgba(207, 211, 214, 0.16);
+}
+
+.form_row{
+    margin-right: -450px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+#recharge{
+    color : #ce1313 ;
+    margin-bottom: 15px;
+}
+
+
+.btnform{
+
+    font-size: 10px;
+}

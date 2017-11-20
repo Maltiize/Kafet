@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="widget_text">
+        <h1 class="spaced_text"> Détails du compte client {{ client.nom }} {{ client.prenom }}</h1>
+
+        <div class="row spaced_text">
+            <a class="btn btn-default" href="{{ path('rechargeClient',{'id':client.id}) }}" role="button">Recharger</a>
+            <a class="btn btn-default" href="{{ path('addtransactionClient',{'id':client.id}) }}" role="button">Debiter</a>
+            <a class="btn btn-default" href="{{ path('editClient',{'id':client.id}) }}" role="button">Modifier</a>
+            <a class="btn btn-default" href="{{ path('deleteClient',{'id':client.id}) }}" role="button">Supprimer</a>
+        </div>
+
+        <h3>Listes des achats </h3>
+            <table class="table table-hover  spaced_text">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom du produit</th>
+                    <th>Prix du produit</th>
+                    <th>Quantité</th>
+                    <th>Prix total</th>
+                    <th>Date de la transaction</th>
+                    <th>Responsable </th>
+
+                </tr>
+                </thead>
+                <tbody>
+            {% for addr in transactions %}
+
+                <tr>
+                    <td>{{  addr.id  }}</td>
+                    <td>{{ addr.produitNom }}</td>
+                    <td>{{  addr.produitPrix  }}€</td>
+                    <td> {{ addr.qtt }}</td>
+                    <td> {{ addr.qtt *  addr.produitPrix}}€</td>
+                    <td>{{  addr.date  }}</td>
+                    <td>{{  addr.crea  }}</td>
+                </tr>
+
+            {% endfor %}
+                </tbody>
+            </table>
+
+        <h3 class="spaced_text">Listes des recharges </h3>
+        <table class="table table-hover  spaced_text">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Montant de la recharge</th>
+                <th>Date de la recharge</th>
+                <th>Responsable </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for addr in recharges %}
+
+                <tr>
+                    <td>{{  addr.id  }}</td>
+                    <td>{{  addr.montant  }}€</td>
+                    <td>{{  addr.date  }}</td>
+                    <td>{{  addr.crea  }}</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}
+
