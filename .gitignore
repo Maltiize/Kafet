@@ -1,5 +1,5 @@
 old kafet
-vendor/*
+vendor/
 var/logs/*
 var/cache/*
 var/sessions/*
